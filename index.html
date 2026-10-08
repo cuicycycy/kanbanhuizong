@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="61iCiOSq8SNtba5TkxoML9">
+<head data-page-node-id="g4PiuSNd5WzWRy7Uuv5wut">
+<meta charset="UTF-8" data-page-node-id="bOuIiTP3dd9D6geOrMuRT6" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="wHdXC82rReiZaQTUc3AMbu" />
+<title>看板汇总导航</title>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card-bg: #ffffff;
+    --text: #1f2733;
+    --muted: #6b7785;
+    --border: #e6eaf0;
+    --shadow: 0 4px 16px rgba(31, 39, 51, 0.06);
+    --shadow-hover: 0 10px 28px rgba(31, 39, 51, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 48px 24px 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: min(96vw, 1800px); margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  header p {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .columns {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .col {
+    flex: 1;
+    min-width: 0;
+    background: var(--col-bg, #ffffff);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px 18px 22px;
+    box-shadow: var(--shadow);
+  }
+  .col.daily { --col-bg: #eef3ff; --col-accent: #4c7bf3; }
+  .col.weekly { --col-bg: #fdf3e3; --col-accent: #f5a623; }
+  .col.monthly { --col-bg: #e9f9f1; --col-accent: #34c759; }
+  .col-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--col-accent, #4c7bf3);
+    margin-bottom: 16px;
+    padding: 9px 13px;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 10px;
+    border-left: 4px solid var(--col-accent, #4c7bf3);
+  }
+  .col-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 16px;
+  }
+  .card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent, #4c7bf3);
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: transparent;
+  }
+  .card:active { transform: translateY(-2px); }
+  .icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    background: var(--accent-soft, #eef3ff);
+    margin-bottom: 14px;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 650;
+    margin-bottom: 8px;
+  }
+  .card .desc {
+    color: var(--muted);
+    font-size: 12.5px;
+    min-height: 36px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 14px;
+    padding: 4px 11px;
+    font-size: 11.5px;
+    border-radius: 999px;
+    background: #f0f3f8;
+    color: var(--muted);
+  }
+  .badge .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #34c759;
+  }
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  @media (max-width: 920px) {
+    .columns { flex-direction: column; }
+    .col-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .col-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-page-node-id="rhzG9ad9Bkq0Bqcgnb7N19">
+  <div class="wrap" data-page-node-id="V5pVZw8dXsygLuDOcDiLxr">
+    <header data-page-node-id="IqwiKHcJUuBvyV9DvW6LWe">
+      <h1 data-page-node-id="rsfyD4jgr1vLZbly0RDvhL">看板汇总导航</h1>
+      <p data-page-node-id="phZUB8O2SRt56Pg1w3Xji1">点击任意卡片即可跳转对应数据看板（新标签页打开）</p>
+    </header>
+
+    <div class="columns" data-page-node-id="5jTryvqgGF1EoM5DIbvx3D">
+      <div class="col daily" data-page-node-id="3Uvlyn0BHOf6Hbb7fGoMJ1">
+        <div class="col-title" data-page-node-id="BlKoWuQX1NGS3iSSH9L6jh">每日更新</div>
+        <div class="col-grid" data-page-node-id="DEloEm7hLVbB7wWOyHQPSJ">
+          <a class="card" href="https://hengjie-kpi-backup.app.workbuddy.host/" target="_blank" rel="noopener" style="--accent:#4c7bf3;--accent-soft:#eef3ff;" data-page-node-id="AKAIAwUkDBKvXvMIAqw8x0">
+            <div class="icon" data-page-node-id="zerZMeoE3H2fUFM6jRT2MN">📈</div>
+            <h2 data-page-node-id="mGFv98XY947eiaBXZDvlqa">增值</h2>
+            <div class="desc" data-page-node-id="SRX0pSeFpfRLWKi3F6q0qf">详情可联系创新部梁嘉华</div>
+            <span class="badge" data-page-node-id="qtlcvvL0ovGSKcgMGrhuFB"><span class="dot" data-page-node-id="D2UfKuZWr5QAirT7OXDa0a"></span>每日 11 点更新</span>
+          </a>
+
+          <a class="card" href="https://codebuddy.work/agents/share/-tTsc5lZa-WSsJ5qq-6AGD7paHxquomHbj41K8nqlgiubqtqaGR5fofHpWOfDn-c?platform=workbuddy" target="_blank" rel="noopener" style="--accent:#ff8a3d;--accent-soft:#fff1e8;" data-page-node-id="6Rp6zb5FG2A8ZVHLAEv4t0">
+            <div class="icon" data-page-node-id="dWMqh8bgbVCTIWAH3WALfi">🔧</div>
+            <h2 data-page-node-id="I0jqBXyXG0HMlbALciYBWi">局改</h2>
+            <div class="desc" data-page-node-id="QB87SZUNLd0OYqmU8bGzzy">详情可联系创新部梁嘉华</div>
+            <span class="badge" data-page-node-id="Hz67Oc6bx23VyVJVDaehqL"><span class="dot" data-page-node-id="XKQDDdabII2FryWGBntZDK"></span>每日 11 点更新</span>
+          </a>
+
+          <a class="card" href="https://cuicycycy.github.io/zongbu/" target="_blank" rel="noopener" style="--accent:#e0457b;--accent-soft:#fdeaf1;" data-page-node-id="9x5ueMmL4ujeyhqDnWDlXx">
+            <div class="icon" data-page-node-id="h3ssWlbiByfgbIdcc2Fsan">🗂️</div>
+            <h2 data-page-node-id="EvOVp4LV3jJ7n9FpjKAs2s">总部升级工单跟踪</h2>
+            <div class="desc" data-page-node-id="UpGIuPL0Hh7IBa5qRbVGO8">详情可联系业务部崔晨阳</div>
+            <span class="badge" data-page-node-id="aLviiE0mCJtnXAlIDRFSHR"><span class="dot" data-page-node-id="CC22DqFxJ1ErCGjtfdJImL"></span>每日 17:30 更新</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col weekly" data-page-node-id="M5rwja2FhsmNz0ksTAaDj8">
+        <div class="col-title" data-page-node-id="cDDFASH3IfGhCtJ2RDCeHb">每周更新</div>
+        <div class="col-grid" data-page-node-id="FMvk1xBsDldwPvPdgP6h3K">
+          <a class="card" href="https://5d47ddf517854efca79acfdbd535559c.app.workbuddy.host" target="_blank" rel="noopener" style="--accent:#f5a623;--accent-soft:#fdf3e3;" data-page-node-id="BJ1jmppFc5nvN7ehEGIcDZ">
+            <div class="icon" data-page-node-id="9oWDDQChRTKZcZP4XVUHQ7">🗓️</div>
+            <h2 data-page-node-id="y53hyeHO7Uryd3nyR93QiH">人员轨迹</h2>
+            <div class="desc" data-page-node-id="4eSbKMNQ5QHleYYMVSF00D">详情可联系业务部崔晨阳</div>
+            <span class="badge" data-page-node-id="wxYxRVOEmiCRvVO6EVW3Y8"><span class="dot" data-page-node-id="j7keNy1vFjaf0UIhLyMhUk"></span>每周一更新</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col monthly" data-page-node-id="4HV9fWlRTW7vZRIXpOpxgG">
+        <div class="col-title" data-page-node-id="Jb4dqt491bFHm9t3ff5s4x">每月更新</div>
+        <div class="col-grid" data-page-node-id="JyAshg9KKXabD3tGIBJRsl">
+          <a class="card" href="https://cuicycycy.github.io/jifenchi/" target="_blank" rel="noopener" style="--accent:#0aa1c7;--accent-soft:#e6f6fb;" data-page-node-id="zGaG2vYv43odGB6IQUWQay">
+            <div class="icon" data-page-node-id="GAte8FYB24IDOt1tNwelJc">💧</div>
+            <h2 data-page-node-id="9EvHnD4WwJbEO4rSdABoSZ">服务商积分池</h2>
+            <div class="desc" data-page-node-id="SRKY01wD55gKMn5kwyu3VL">详情可联系业务部崔晨阳</div>
+            <span class="badge" data-page-node-id="zmoyExbyzng6m3GeruJESd"><span class="dot" data-page-node-id="PkKXiZWhHrDTwvSomom34f"></span>实时 / 定期</span>
+          </a>
+
+          <a class="card" href="https://panruizhen.github.io/hengjie-dashboard-2026/" target="_blank" rel="noopener" style="--accent:#34c759;--accent-soft:#e8f9ee;" data-page-node-id="1zO6MfxxbSb6xOWzLAPSMM">
+            <div class="icon" data-page-node-id="ucEhwncgJ7rbpXcrnJBWXZ">🎯</div>
+            <h2 data-page-node-id="bnXBvMhoHobS2rAz6MpBwj">一次就好</h2>
+            <div class="desc" data-page-node-id="Tnrbyhsuh1TobI6zaeMyLu">详情可联系技术部潘瑞珍</div>
+            <span class="badge" data-page-node-id="ApCBFeWAiowFw6uf8tOoXu"><span class="dot" data-page-node-id="ita3YVzLxmgE1v1HJxCrHq"></span>每月更新</span>
+          </a>
+
+          <a class="card" href="https://wangpancheng0427.github.io/hengee-dashboard/" target="_blank" rel="noopener" style="--accent:#7c5cff;--accent-soft:#f1edff;" data-page-node-id="Rzh1BTH552uXnwYyb7NBZC">
+            <div class="icon" data-page-node-id="ZaOaDbDVvgdOADd0O06HvP">👷</div>
+            <h2 data-page-node-id="K2FdkbJEVWCtI5s5eJA6ag">工程师合格率</h2>
+            <div class="desc" data-page-node-id="cZSQReN7KAPAiTCCKIZYDW">详情可联系技术部刘云瑶</div>
+            <span class="badge" data-page-node-id="zBlrLcDDeEG2PPbEC9CfGl"><span class="dot" data-page-node-id="WFW05AUojYsr4xrEae4666"></span>每月更新</span>
+          </a>
+
+          <a class="card" href="https://8365231de8814cf688093f6672e5d2eb.app.codebuddy.work" target="_blank" rel="noopener" style="--accent:#d4a017;--accent-soft:#fdf6e3;" data-page-node-id="NtQLV50yURYUHzlFgfIlT9">
+            <div class="icon" data-page-node-id="rYdG05PxFn81WuiXjgWu1K">🏅</div>
+            <h2 data-page-node-id="jm5Si6yJGdZU7SlTovcZV8">金牌服务质量</h2>
+            <div class="desc" data-page-node-id="j28cAAZJOHY64aKSfRNeCz">详情可联系技术部关淑婷</div>
+            <span class="badge" data-page-node-id="1OQvWAm3gQ5yEmWd33ABYq"><span class="dot" data-page-node-id="xwMK5AKl8HyAzK7uCMwg5s"></span>每月更新</span>
+          </a>
+
+          <a class="card" href="https://e58a385874e54e5d8459c6be58dbc3a7.app.workbuddy.link/" target="_blank" rel="noopener" style="--accent:#9b59b6;--accent-soft:#f3eafb;" data-page-node-id="A2zCdlt3IQilQFLAtn7K0R">
+            <div class="icon" data-page-node-id="pG0rvihlcf1TcdFFSYXtN5">🔩</div>
+            <h2 data-page-node-id="bSOmAay7BAO9PPKKpEcBa5">配件核心指标</h2>
+            <div class="desc" data-page-node-id="Ne2LERKMsMHG4tPl6maeoW">详情可联系配件部何晓敏</div>
+            <span class="badge" data-page-node-id="JGCsBlwdYmScZQgkzjBSj1"><span class="dot" data-page-node-id="eaFsxUUwf7Os3bCUENBpjj"></span>每月更新</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer data-page-node-id="t6PCHDa2z13M9uksWHQAgZ">看板汇总导航 · 如需增删看板请联系管理员更新</footer>
+  </div>
+</body>
+</html>
